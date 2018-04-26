@@ -1,0 +1,8 @@
+https://plot.ly/python/getting-started/
+https://www.geeksforgeeks.org/searching-for-patterns-set-3-rabin-karp-algorithm/
+https://www.ranks.nl/stopwords
+https://programminghistorian.org/lessons/counting-frequencies#frequencies
+https://blog.softhints.com/python-string-split-by-separator/
+
+http://positivewordsresearch.com/list-of-negative-words/
+http://positivewordsresearch.com/list-of-positive-words/
