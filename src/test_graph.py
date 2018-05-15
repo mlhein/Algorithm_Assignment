@@ -9,11 +9,11 @@ def Scattergraph(dic):
         x=dic.keys(),
         y=dic.values(),
         mode = "lines+markers",
-        name = "Word Count And Stopword"
+        name = "Word Count"
     )
     data = ([trace0])
     layout = go.Layout(
-    title='Plot Title')
+    title='Word Count')
     fig = go.Figure(data=data, layout=layout)
     py.plot(fig, filename = 'basic-line')
 
