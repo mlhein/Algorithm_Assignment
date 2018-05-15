@@ -1,9 +1,9 @@
 # Algorithm Analysis and Design
 
 1. Main file to be execute in
-        py -2 /src/word_freq.py
+>  py -2 /src/word_freq.py
 2. All the output screenshot is in
-        /img
+> /img
 3. Sample of output
 
 ![](https://github.com/mlhein/Algorithm_Assignment/blob/master/img/main_output.PNG)
