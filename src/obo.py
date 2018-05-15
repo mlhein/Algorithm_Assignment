@@ -6,6 +6,10 @@ import operator
 import re
 import string
 from tabulate import *
+
+#############################
+#   Function to strip html  #
+#############################
 def stripTags(pageContents):
     startLoc = pageContents.find("<p>")
     endLoc = pageContents.rfind("<br/>")
@@ -35,20 +39,20 @@ def wordListToFreqDict(wordlist):
     wordfreq = [wordlist.count(p) for p in wordlist]
     return dict(zip(wordlist, wordfreq))
 
-# Sort a dictionary of word-frequency pairs in
-# order of descending frequency.
-def sortFreqDict(freqdict):
-    aux = [[freqdict[key], key] for key in freqdict]
-    aux.sort()
-    aux.reverse()
-    return aux
 
+#########################################
+#   Function to get list of stop words  #
+#########################################
 def getListStopwords():
     fo = open("resources/stopwordlist.txt")
     stopwords = fo.read()
     stopwords = stopwords.split('\n')
     fo.close()
     return stopwords
+
+######################################################
+#   Function to get list of positive/negative words  #
+######################################################
 def getListPositivewords():
     fo = open("resources/positive.txt")
     pword = str.lower(fo.read())
@@ -64,17 +68,9 @@ def getListNegativewords():
     fo.close()
     return pword
 
-
-# Get words only from the list
-def getWord(wordlist):
-    gWord = [item[1] for item in wordlist]
-    return gWord
-
-# Get number only from the list
-def getNum(wordlist):
-    nWord = [item[0] for item in wordlist]
-    return nWord
-
+##########################################################
+#       Function to classify words using rabin karp      #
+##########################################################
 # remove stopword
 def rbkarp_stop(pattern):
     text = getListStopwords()
@@ -136,12 +132,14 @@ def rbkarp_neutral(pattern):
             neutralw.append(i)
     return neutralw
 
+##########################
+#    Analysis Function   #
+##########################
 def AnalaysisArticle(positive, negative, neutral, fullword, dic):
     freq = getFreq(positive, negative, neutral, fullword, dic)
     percent = getPercent(freq["Positive"], freq["Negative"], freq["Neutral"], freq["Full"])
     results = {"freq": freq, "percent": percent}
     return results
-
 
 def AnalysisFreq(percent):
     print "Article is", max(percent, key=lambda i: percent[i])
@@ -176,8 +174,6 @@ def get_dic(keys, ori_dic):
         new_dic[i] = ori_dic[i]
     return new_dic
 
-
-
 def printAnalysis(results):
     table_header = ["Type","Total Words", "Percentage (%)"]
     table_body = [
@@ -191,25 +187,23 @@ def printAnalysis(results):
 
 
 
-#########################################################
-#   Below function is not using Rabin Karp Algorithm    #
-#########################################################
+############################################################################
+#   Below function is not using Rabin Karp Algorithm & Unused function.    #
+#                       No need to be in the report                        #
+############################################################################
 # Given a list of words, remove any that are
 # in a list of stop words.
 def removeStopwords(wordlist):
     stopwords = getListStopwords()
     return [w for w in wordlist if w not in stopwords]
-
 # Classify into positive
 def classifypositive(wordlist):
     pword = getListPositivewords()
     return [w for w in wordlist if w in pword]
-
 # Classify into negative
 def classifynegative(wordlist):
     pword = getListNegativewords()
     return [w for w in wordlist if w in pword]
-
 # Classify into neutral
 def classifyneutral(wordlist):
     fo = open("resources/negative.txt")
@@ -219,3 +213,18 @@ def classifyneutral(wordlist):
     fo.close()
     positivew, negativew = classifypositive(wordlist), classifynegative(wordlist)
     return [w for w in wordlist if w not in (positivew and negativew)]
+# Sort a dictionary of word-frequency pairs in
+# order of descending frequency.
+def sortFreqDict(freqdict):
+    aux = [[freqdict[key], key] for key in freqdict]
+    aux.sort()
+    aux.reverse()
+    return aux
+# Get words only from the list
+def getWord(wordlist):
+    gWord = [item[1] for item in wordlist]
+    return gWord
+# Get number only from the list
+def getNum(wordlist):
+    nWord = [item[0] for item in wordlist]
+    return nWord

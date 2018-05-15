@@ -3,6 +3,10 @@ import plotly.graph_objs as go
 import plotly.plotly as py
 from plotly.graph_objs import *
 
+#########################################
+#   Function to printing out the graph  #
+#########################################
+
 def Scattergraph(dic):
 
     trace0 = go.Scatter(

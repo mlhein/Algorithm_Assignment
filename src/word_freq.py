@@ -41,6 +41,9 @@ def MyMain(myurl):
     print "Printing Graph~"
     test_graph.bar(Classified_dic)
     test_graph.Scattergraph(dictionary)
+
+
+# To Test out output when running the code. No Need to be in the report.
 #print "+++++++++++++++++++++++++++++ fullwordlist after removing stripNonAlphaNum +++++++++++++++++++++++++++++\n", fullwordlist
 #print "+++++++++++++++++++++++++++++ WORDLIST after removing stopwords +++++++++++++++++++++++++++++\n", wordlist
 #print "+++++++++++++++++++++++++++++ dictionary after wordlist +++++++++++++++++++++++++++++\n", dictionary
@@ -48,6 +51,7 @@ def MyMain(myurl):
 #print "+++++++++++++++++++++++++++++ gWord after filtering words +++++++++++++++++++++++++++++\n", gWord
 #print"\n+++++++++++++++++++++++++++++ List of positive words rb +++++++++++++++++++++++++++++\n ", positivew, "\n+++++++++++++++++++++++++++++ List of negative words +++++++++++++++++++++++++++++\n ", negativew, "\n+++++++++++++++++++++++++++++ List of neutral words +++++++++++++++++++++++++++++\n ", neutralw
 
+# Main Function
 if __name__ == "__main__":
     while True:
         cmd = raw_input("\nEnter URL ((q)uit): ")
